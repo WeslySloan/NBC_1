@@ -21,9 +21,6 @@ void hideCursor();
 int getCurrentCursorLine();
 void clearLine(int lineNumber);
 
-class BattleManager;
-class BattleGrid;
-
 class BattleGrid {
 private:
     const int GRID_WIDTH = 4;
@@ -83,9 +80,8 @@ private:
     Enemy* enemy;
     BattleGrid* grid;
 
-    // 멤버 함수로 변경
-    size_t GetCardCount_temp() { return 3; }
-    Card* GetCard_temp(int index) {
+    size_t GetPlayerCardCount_temp() { return 3; }
+    Card* GetPlayerCard_temp(int index) {
         if (index == 0) return new C_Move("이동 카드", 1, 5, 2, 0, 1);
         if (index == 1) {
             bool attackRange[3][3] = { {false, true, false}, {true, true, true}, {false, true, false} };
@@ -97,11 +93,13 @@ private:
 
 public:
     BattleManager(Player* p, Enemy* e, BattleGrid* g) : player(p), enemy(e), grid(g) {}
+
     void StartCombat() {
         std::cout << "전투 시작!\n";
         grid->PlaceEntity(player, player->GetPosX(), player->GetPosY());
         grid->PlaceEntity(enemy, enemy->GetPosX(), enemy->GetPosY());
         grid->PrintGrid();
+
         while (!IsCombatOver()) {
             PlayerTurn();
             if (IsCombatOver()) break;
@@ -109,13 +107,15 @@ public:
         }
         std::cout << "\n전투 종료!\n";
     }
+
     void PlayerTurn() {
         std::cout << "\n--- 플레이어의 턴 ---\n";
         player->PrintStatus();
         player->ShowCards();
-        std::cout << "사용할 카드를 선택하세요 (1~" << GetCardCount_temp() << "): ";
+        std::cout << "사용할 카드를 선택하세요 (1~" << GetPlayerCardCount_temp() << "): ";
         HandlePlayerInput();
     }
+
     void EnemyTurn() {
         std::cout << "\n--- 적의 턴 ---\n";
         int oldX = enemy->GetPosX();
@@ -124,17 +124,18 @@ public:
         grid->MoveEntity(enemy, oldX, oldY, enemy->GetPosX(), enemy->GetPosY());
         grid->PrintGrid();
     }
+
     void HandlePlayerInput() {
         char input = _getch();
         if (input >= '1' && input <= '3') {
             int cardIndex = input - '1';
 
-            if (cardIndex >= GetCardCount_temp()) {
+            if (cardIndex >= GetPlayerCardCount_temp()) {
                 std::cout << "유효하지 않은 카드 번호입니다.\n";
                 return;
             }
 
-            Card* selectedCard = GetCard_temp(cardIndex);
+            Card* selectedCard = GetPlayerCard_temp(cardIndex);
 
             if (!selectedCard) {
                 std::cout << "유효하지 않은 카드 번호입니다.\n";
@@ -196,6 +197,7 @@ public:
         }
         grid->PrintGrid();
     }
+
     bool IsCombatOver() const {
         return player->GetHP() <= 0 || enemy->GetHP() <= 0;
     }
@@ -203,9 +205,12 @@ public:
 
 int main() {
     srand(static_cast<unsigned int>(time(0)));
+
     Player player("이누야샤", 1, 100, 50, 20, 10);
     Enemy enemy("검은 요괴", 1, 80, 40, 15, 5, 50, 30);
+
     BattleGrid grid;
+
     player.setPosX(0);
     player.setPosY(1);
     enemy.setPosX(3);
@@ -216,7 +221,12 @@ int main() {
     player.AddCard(new C_Attack("칼날바람", 3, 15, 30, attackRange));
     player.AddCard(new C_Guard("방어 카드", 2, 10, 20));
 
+    enemy.AddCard(new C_Move("이동 카드", 1, 5, 2, 0, 1));
+    enemy.AddCard(new C_Attack("칼날바람", 3, 15, 30, attackRange));
+    enemy.AddCard(new C_Guard("방어 카드", 2, 10, 20));
+
     BattleManager battleManager(&player, &enemy, &grid);
     battleManager.StartCombat();
+
     return 0;
 }
