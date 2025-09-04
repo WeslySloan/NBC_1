@@ -15,7 +15,7 @@
 #include "C_Guard.hpp"
 #include "C_Attack.hpp"
 
-// Utility functions (assuming these are defined elsewhere)
+// Utility functions (assuming these are defined in Player.cpp)
 void setCursorPosition(int x, int y);
 void hideCursor();
 int getCurrentCursorLine();
@@ -85,7 +85,7 @@ private:
         if (index == 0) return new C_Move("이동 카드", 1, 5, 2, 0, 1);
         if (index == 1) {
             bool attackRange[3][3] = { {false, true, false}, {true, true, true}, {false, true, false} };
-            return new C_Attack("칼날바람", 3, 15, 30, attackRange);
+            return new C_Attack("공격 카드", 3, 15, 30, attackRange);
         }
         if (index == 2) return new C_Guard("방어 카드", 2, 10, 20);
         return nullptr;
@@ -118,8 +118,6 @@ public:
 
     void EnemyTurn() {
         std::cout << "\n--- 적의 턴 ---\n";
-        player->ResetGuardBonus(); // 적 턴 시작 시 방어 보너스 초기화
-
         int oldX = enemy->GetPosX();
         int oldY = enemy->GetPosY();
         enemy->Act(player);
@@ -143,9 +141,6 @@ public:
                 std::cout << "유효하지 않은 카드 번호입니다.\n";
                 return;
             }
-
-            // 스태미나 소모
-            player->UseStamina(selectedCard->C_GetCost());
 
             C_Move* moveCard = dynamic_cast<C_Move*>(selectedCard);
             if (moveCard) {
@@ -181,6 +176,7 @@ public:
                 int dist_x = std::abs(playerX - enemyX);
                 int dist_y = std::abs(playerY - enemyY);
 
+                // 플레이어와 적이 같은 칸에 있어도 공격 가능하도록 조건 수정
                 if (dist_x <= 1 && dist_y <= 1) {
                     enemy->TakeDamage(attackCard->A_GetATK());
                 }
@@ -191,10 +187,8 @@ public:
 
             C_Guard* guardCard = dynamic_cast<C_Guard*>(selectedCard);
             if (guardCard) {
-                std::cout << guardCard->C_GetName() << " 카드를 사용했습니다. 방어력이 " << guardCard->G_GetDEF() << " 증가합니다.\n";
-                std::cout << "스태미나를 " << guardCard->C_GetGen() << " 회복합니다.\n";
-                player->AddGuardBonus(guardCard->G_GetDEF());
-                player->HealStamina(guardCard->C_GetGen());
+                std::cout << guardCard->C_GetName() << " 카드를 사용했습니다. 방어력이 증가합니다.\n";
+                player->Heal(guardCard->G_GetDEF());
             }
 
             delete selectedCard;
@@ -225,11 +219,11 @@ int main() {
 
     player.AddCard(new C_Move("이동 카드", 1, 5, 2, 0, 1));
     bool attackRange[3][3] = { {false, true, false}, {true, true, true}, {false, true, false} };
-    player.AddCard(new C_Attack("칼날바람", 3, 15, 30, attackRange));
+    player.AddCard(new C_Attack("공격 카드", 3, 15, 30, attackRange));
     player.AddCard(new C_Guard("방어 카드", 2, 10, 20));
 
     enemy.AddCard(new C_Move("이동 카드", 1, 5, 2, 0, 1));
-    enemy.AddCard(new C_Attack("칼날바람", 3, 15, 30, attackRange));
+    enemy.AddCard(new C_Attack("공격 카드", 3, 15, 30, attackRange));
     enemy.AddCard(new C_Guard("방어 카드", 2, 10, 20));
 
     BattleManager battleManager(&player, &enemy, &grid);

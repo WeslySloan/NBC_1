@@ -7,15 +7,21 @@
 #include <ctime>
 #include <cmath>
 
-void Enemy::AddCard(Card* newCard) {
-    cards.push_back(newCard);
+// Enemy 클래스의 생성자 정의
+Enemy::Enemy(const std::string& name, int lvl, int hp, int stam, int atk, int def, int money, int exp)
+    : Entity(name, lvl, hp, stam, atk, def), mob_name(name), drop_money(money), drop_exp(exp) {
 }
 
+// Enemy 클래스의 소멸자 정의
 Enemy::~Enemy() {
     for (Card* card : cards) {
         delete card;
     }
     cards.clear();
+}
+
+void Enemy::AddCard(Card* newCard) {
+    cards.push_back(newCard);
 }
 
 void Enemy::Act(Entity* target)
@@ -28,9 +34,11 @@ void Enemy::Act(Entity* target)
         return;
     }
 
+    // 카드 덱에서 무작위로 카드 한 장 선택
     int cardIndex = std::rand() % cards.size();
     Card* selectedCard = cards[cardIndex];
 
+    // 선택된 카드의 종류에 따라 행동 수행
     C_Move* moveCard = dynamic_cast<C_Move*>(selectedCard);
     if (moveCard) {
         std::cout << GetName() << "이(가) '" << moveCard->C_GetName() << "' 카드를 사용합니다!\n";
@@ -38,6 +46,7 @@ void Enemy::Act(Entity* target)
         int newX = GetPosX();
         int newY = GetPosY();
 
+        // 플레이어에게 가장 가까운 방향으로 이동
         if (newX < target->GetPosX()) newX++;
         else if (newX > target->GetPosX()) newX--;
 
@@ -65,11 +74,13 @@ void Enemy::Act(Entity* target)
         return;
     }
 
-    C_Guard* guardCard = dynamic_cast<C_Guard*>(selectedCard);
-    if (guardCard) {
-        std::cout << GetName() << "이(가) '" << guardCard->C_GetName() << "' 카드를 사용합니다! 방어 태세를 취합니다.\n";
-        Heal(guardCard->G_GetDEF());
+    /*C_Guard* guardCard = dynamic_cast<C_Guard*>(selectedCard);
+    if (guardCard) 
+    {
+        std::cout << GetName() << "이(가) '" << guardCard->C_GetName() << "' 카드를 사용합니다!\n";
+        std::cout << GetName() << "의 스태미나가 " << guardCard->C_GetGen() << " 회복됩니다.\n";
+        HealStamina(guardCard->C_GetGen());
         return;
-    }
+    }*/
     std::cout << GetName() << "은(는) 알 수 없는 카드를 사용했습니다.\n";
 }
