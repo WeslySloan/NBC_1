@@ -15,7 +15,7 @@
 #include "C_Guard.hpp"
 #include "C_Attack.hpp"
 
-// Utility functions (assuming these are defined in Player.cpp)
+// Utility functions (assuming these are defined elsewhere)
 void setCursorPosition(int x, int y);
 void hideCursor();
 int getCurrentCursorLine();
@@ -118,6 +118,8 @@ public:
 
     void EnemyTurn() {
         std::cout << "\n--- 적의 턴 ---\n";
+        player->ResetGuardBonus(); // 적 턴 시작 시 방어 보너스 초기화
+
         int oldX = enemy->GetPosX();
         int oldY = enemy->GetPosY();
         enemy->Act(player);
@@ -141,6 +143,9 @@ public:
                 std::cout << "유효하지 않은 카드 번호입니다.\n";
                 return;
             }
+
+            // 스태미나 소모
+            player->UseStamina(selectedCard->C_GetCost());
 
             C_Move* moveCard = dynamic_cast<C_Move*>(selectedCard);
             if (moveCard) {
@@ -176,7 +181,7 @@ public:
                 int dist_x = std::abs(playerX - enemyX);
                 int dist_y = std::abs(playerY - enemyY);
 
-                if (dist_x <= 1 && dist_y <= 1 && (dist_x > 0 || dist_y > 0)) {
+                if (dist_x <= 1 && dist_y <= 1) {
                     enemy->TakeDamage(attackCard->A_GetATK());
                 }
                 else {
@@ -186,8 +191,10 @@ public:
 
             C_Guard* guardCard = dynamic_cast<C_Guard*>(selectedCard);
             if (guardCard) {
-                std::cout << guardCard->C_GetName() << " 카드를 사용했습니다. 방어력이 증가합니다.\n";
-                player->Heal(guardCard->G_GetDEF());
+                std::cout << guardCard->C_GetName() << " 카드를 사용했습니다. 방어력이 " << guardCard->G_GetDEF() << " 증가합니다.\n";
+                std::cout << "스태미나를 " << guardCard->C_GetGen() << " 회복합니다.\n";
+                player->AddGuardBonus(guardCard->G_GetDEF());
+                player->HealStamina(guardCard->C_GetGen());
             }
 
             delete selectedCard;
