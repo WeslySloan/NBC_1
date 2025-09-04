@@ -1,64 +1,36 @@
-#include "Entity.h"
-#include <iostream>
+#include "Entity.hpp"
 
-using namespace std;
-
-Entity::Entity(const string& entityName, int lvl, int hp, int stam, int atk, int def)
-    : name(entityName), level(lvl), maxHP(hp), currentHP(hp), stamina(stam), attack(atk), defense(def) {}
+Entity::Entity(const std::string& name, int level, int hp, int stamina, int atk, int def)
+    : Name(name), Level(level), HP(hp), maxHP(hp), Stamina(stamina), ATK(atk), DEF(def), posX(0), posY(0) {
+}
 
 Entity::~Entity() {}
 
-void Entity::TakeDamage(int damage) 
+void Entity::TakeDamage(int damage)
 {
-    int finalDamage = damage - defense;
-    if (finalDamage < 0) 
-        finalDamage = 0;
-
-    currentHP -= finalDamage;
-    if (currentHP < 0) 
-        currentHP = 0;
-
-    cout << name << "은(는) " << finalDamage << "의 피해를 입었습니다! (남은 HP: " << currentHP << ")\n";
+    int finalDamage = damage - DEF;
+    if (finalDamage < 0) { finalDamage = 0; }
+    HP -= finalDamage;
+    if (HP < 0) { HP = 0; }
+    std::cout << Name << "이(가) " << finalDamage << "의 데미지를 입었습니다. 현재 HP: " << HP << std::endl;
 }
 
-void Entity::Heal(int amount) 
-{
-    currentHP += amount;
-    if (currentHP > maxHP) 
-        currentHP = maxHP;
-
-    cout << name << "의 HP가 " << amount << "만큼 회복되었습니다! (현재 HP: " << currentHP << ")\n";
+void Entity::Heal(int amount) {
+    HP += amount;
+    if (HP > maxHP) {
+        HP = maxHP;
+    }
+    std::cout << Name << "이(가) " << amount << "의 HP를 회복했습니다. 현재 HP: " << HP << std::endl;
 }
 
-void Entity::UseStamina(int amount) 
-{
-    stamina -= amount;
-    if (stamina < 0) 
-        stamina = 0;
-
-}
-
-void Entity::RecoverStamina(int amount) 
-{
-    stamina += amount;
-}
-
-void Entity::PrintStatus() const 
-{
-    cout << "--------------------\n";
-    cout << "이름: " << name << "\n";
-    cout << "레벨: " << level << "\n";
-    cout << "HP: " << currentHP << " / " << maxHP << "\n";
-    cout << "스태미나: " << stamina << "\n";
-    cout << "공격력: " << attack << "\n";
-    cout << "방어력: " << defense << "\n";
-    cout << "--------------------\n";
-}
-
-string Entity::GetName() const { return name; }
-int Entity::GetLevel() const { return level; }
-int Entity::GetCurrentHP() const { return currentHP; }
+int Entity::GetLv() const { return Level; }
+int Entity::GetHP() const { return HP; }
+int Entity::GetStamina() const { return Stamina; }
+int Entity::GetATK() const { return ATK; }
+int Entity::GetDEF() const { return DEF; }
+std::string Entity::GetName() const { return Name; }
 int Entity::GetMaxHP() const { return maxHP; }
-int Entity::GetStamina() const { return stamina; }
-int Entity::GetAttack() const { return attack; }
-int Entity::GetDefense() const { return defense; }
+int Entity::GetPosX() const { return posX; }
+int Entity::GetPosY() const { return posY; }
+void Entity::setPosX(int x) { this->posX = x; }
+void Entity::setPosY(int y) { this->posY = y; }
