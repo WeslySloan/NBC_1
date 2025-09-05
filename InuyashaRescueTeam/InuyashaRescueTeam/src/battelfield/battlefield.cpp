@@ -27,7 +27,8 @@ void BattleField::field_move(int dirX, int dirY, int entityType)
 		std::cout << "이동할 수 없습니다." << std::endl;
 		return;
 	}
-	else {
+	else 
+	{
 		battlegrid[*currentY][*currentX] = 0;
 		*currentX = NextX;
 		*currentY = NextY;

@@ -1,4 +1,7 @@
 ﻿  Main.cpp
+  battlefield.cpp
   BattleManager.cpp
+  Player.cpp
+  GameManager.cpp
   코드를 생성하고 있습니다...
   InuyashaRescueTeam.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\InuyashaRescueTeam\x64\Debug\InuyashaRescueTeam.exe

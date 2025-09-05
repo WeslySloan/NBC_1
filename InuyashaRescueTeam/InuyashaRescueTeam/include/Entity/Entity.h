@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 
+#define MAX_HP 100
+#define MAX_STAMINA 100
+
 class Entity {
 protected:
     std::string Name;

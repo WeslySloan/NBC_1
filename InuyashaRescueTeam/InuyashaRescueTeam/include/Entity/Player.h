@@ -60,7 +60,7 @@ public:
     void PrintStatus() const;
     void AddCard(std::shared_ptr<Card> newCard); // 카드 추가
     void AddEXP(int amount);
-    void AddStamina(int amount);
+    void AddStamina(int amount); // max 스태미나 추가후 지우기
     void ShowCards() const;     // 카드 출력
     
 };
