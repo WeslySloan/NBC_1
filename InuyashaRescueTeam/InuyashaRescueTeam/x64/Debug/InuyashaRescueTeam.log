@@ -1,15 +1,2 @@
-﻿  Main.cpp
-  battlefield.cpp
-  BattleManager.cpp
-  Card.cpp
-  C_Attack.cpp
-  C_Guard.cpp
-  C_Move.cpp
-  Enemy.cpp
-  Entity.cpp
-  Player.cpp
-  GameManager.cpp
-  Merchant.cpp
-  test.cpp
-  코드를 생성하고 있습니다...
+﻿  BattleManager.cpp
   InuyashaRescueTeam.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\InuyashaRescueTeam\x64\Debug\InuyashaRescueTeam.exe
