@@ -1,37 +1,49 @@
-#include "Entity\Enemy.h"
+#include "Entity/Enemy.h"
+#include "Card/C_Attack.h"
+#include <random>
 
-std::shared_ptr<Card> Enemy::GetRandomCard() {
+std::shared_ptr<Card> Enemy::GetRandomCard(int playerX, int playerY, int enemyX, int enemyY)
+{
+    // 플레이어와 적 사이의 거리를 계산
+    int distanceX = std::abs(playerX - enemyX);
+    int distanceY = std::abs(playerY - enemyY);
+
+    // 3x3 범위 안에 플레이어가 있는지 확인
+    if (distanceX <= 1 && distanceY <= 1) {
+        // 3x3 범위 안에 있다면 공격 가중치를 4로 설정
+        cardWeights["E_WideStrike"] = 4;
+        cardWeights["E_LineAttack"] = 4;
+    }
+    else {
+        // 그렇지 않다면 기본 가중치인 2로 설정
+        cardWeights["E_WideStrike"] = 2;
+        cardWeights["E_LineAttack"] = 2;
+    }
+
     int totalWeight = 0;
-    for (const auto& card : deck) {
-        // map에 없는 카드 이름에 접근하면 에러가 날 수 있으므로, find를 이용해 확인하는 것이 더 안전함.
-        if (cardWeights.find(card->C_GetName()) != cardWeights.end()) {
-            totalWeight += cardWeights[card->C_GetName()];
-        }
-        else {
-            // 가중치가 설정되지 않은 카드는 기본 가중치 1을 부여
-            totalWeight += 1;
-        }
+    for (const auto& pair : cardWeights) {
+        totalWeight += pair.second;
     }
 
     if (totalWeight == 0) {
-        return deck.front(); // 가중치가 없으면 첫 번째 카드 반환
+        return nullptr;
     }
 
-    int randomValue = rand() % totalWeight;
-    int currentWeight = 0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(1, totalWeight);
 
-    for (const auto& card : deck) {
-        if (cardWeights.find(card->C_GetName()) != cardWeights.end()) {
-            currentWeight += cardWeights[card->C_GetName()];
-        }
-        else {
-            currentWeight += 1;
-        }
+    int randomValue = distrib(gen);
 
-        if (randomValue < currentWeight) {
-            return card;
+    for (const auto& pair : cardWeights) {
+        randomValue -= pair.second;
+        if (randomValue <= 0) {
+            for (const auto& card : deck) {
+                if (card->C_GetName() == pair.first) {
+                    return card;
+                }
+            }
         }
     }
-
-    return deck.front(); // 안전장치
+    return nullptr;
 }

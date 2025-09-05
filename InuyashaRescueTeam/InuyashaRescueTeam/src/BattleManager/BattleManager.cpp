@@ -13,13 +13,15 @@ void BattleManager::StartBattle()
 		field.field_print();
 		ShowUI();
 		std::shared_ptr<Card> pCard = PlayerTurn();
-		std::shared_ptr<Card> eCard = enemy->GetRandomCard();
+
+		// 적 턴 시작 시 플레이어와 적의 위치를 GetRandomCard 함수에 전달
+		std::shared_ptr<Card> eCard = enemy->GetRandomCard(field.PlayerPositionX, field.PlayerPositionY, field.EnemyPositionX, field.EnemyPositionY);
 
 		std::cout << enemy->GetName() << "이(가) [" << eCard->C_GetName() << "] 카드를 선택했다!\n";
 		system("cls");
 		Resolve(pCard, eCard, field);
 		Healstamina();
-		enemy->RecoverStamina(10); // 적 스태미나 10 회복
+		enemy->RecoverStamina(10);
 	}
 	EndBattle();
 }
@@ -52,10 +54,22 @@ void BattleManager::ShowCard(std::vector<std::shared_ptr<Card>> card)
 
 void BattleManager::ShowUI()
 {
+	// 플레이어와 적 사이의 거리를 계산
+	int distanceX = std::abs(field.PlayerPositionX - field.EnemyPositionX);
+	int distanceY = std::abs(field.PlayerPositionY - field.EnemyPositionY);
+
+	// 3x3 범위 안에 있는지 확인
+	bool isInAttackRange = (distanceX <= 1 && distanceY <= 1);
+
 	//-------------임시 테스트용---------------
 	std::cout << "==== 전투 UI ====\n";
 	std::cout << player->GetName() << " HP: " << player->GetHP() << " Stamina: " << player->GetStamina()
-		<< " | " << enemy->GetName() << " HP: " << enemy->GetHP() << " Stamina: " << enemy->GetStamina() << "\n";
+		<< " | " << enemy->GetName() << " HP: " << enemy->GetHP() << " Stamina: " << enemy->GetStamina();
+
+	if (isInAttackRange) {
+		std::cout << " ★"; // 공격 가중치 범위 안에 있을 때 ★ 표시
+	}
+	std::cout << "\n";
 }
 
 std::shared_ptr<Card> BattleManager::PlayerTurn()
