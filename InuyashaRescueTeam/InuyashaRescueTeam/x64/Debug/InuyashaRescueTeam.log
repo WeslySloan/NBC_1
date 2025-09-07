@@ -1,7 +1,12 @@
-﻿  Main.cpp
-  battlefield.cpp
-  BattleManager.cpp
-  Player.cpp
-  GameManager.cpp
-  코드를 생성하고 있습니다...
-  InuyashaRescueTeam.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\InuyashaRescueTeam\x64\Debug\InuyashaRescueTeam.exe
+﻿  GameManager.cpp
+C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(48,15): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,35): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,44): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
+  
+  InuyashaRescueTeam.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\x64\Debug\InuyashaRescueTeam.exe
+  0개 파일이 복사되었습니다.
