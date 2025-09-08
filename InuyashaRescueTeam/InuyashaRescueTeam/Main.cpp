@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <string>
 #include "Cards.h"
@@ -9,6 +9,7 @@
 #include <windows.h>
 #include "Merchant\Merchant.h"
 #include "Map/MapManager.h"
+#include "ImagePrinter.h"
 
 
 
@@ -16,22 +17,24 @@ int main() {
     srand((unsigned int)time(nullptr)); // 랜덤 시드 적카드 뽑기때문에 임시로..
     SetConsoleOutputCP(CP_UTF8);
     // 또는 wide 출력: _setmode(_fileno(stdout), _O_U16TEXT);
-    std::cout << "--------------------안녕------------------------" << std::endl;
+    //std::cout << "--------------------안녕------------------------" << std::endl;
 
-    // 게임매니저 사용할 때, GAME_MANAGER-> 로 접근
+    //// 게임매니저 사용할 때, GAME_MANAGER-> 로 접근
     GAME_MANAGER->Init();
 
-    //while (true)
-    //{
-    //    GAME_MANAGER->Update();
-    //}
-
-    GAME_MANAGER->Run();
+    while (true)
+    {
+        GAME_MANAGER->Update();
+    }
 
 
-    //// 상점 테스트 부분
+
+    // 상점 테스트 부분
     //Merchant* test = new Merchant();
     //test->OpenShop();
+  
+//     ImagePrinter image;
+//     image.DrawImage(KEY, 0, 0);
 
     return 0;
 }

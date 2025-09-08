@@ -1,12 +1,78 @@
-﻿  GameManager.cpp
-C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(48,15): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Main.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(7,75): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(13,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(48,15): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,35): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,44): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  
+  BattleManager.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(7,75): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/BattleManager/BattleManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(13,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/BattleManager/BattleManager.cpp'을(를) 컴파일하는 중)
+  
+  CardUI.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\BattleUI\CardUI.cpp(93,27): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\BattleUI\CardUI.cpp(244,11): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameManager.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(7,75): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,35): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(13,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
   
-C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,44): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(48,15): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
   
-  InuyashaRescueTeam.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\NBC_TeamProject_02-develop\InuyashaRescueTeam\x64\Debug\InuyashaRescueTeam.exe
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,35): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,44): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/GameManager/GameManager.cpp'을(를) 컴파일하는 중)
+  
+  MapManager.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(48,15): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Map/MapManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,35): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Map/MapManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\Map\MapTypes.h(60,44): warning C4244: '초기화 중': 'const int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Map/MapManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(7,75): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Map/MapManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(13,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Map/MapManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Map\MapManager.cpp(46,41): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Map\MapManager.cpp(238,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Map\MapManager.cpp(239,16): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Map\MapManager.cpp(484,56): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Merchant.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(7,75): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Merchant/Merchant.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\include\BattleUI\Text.h(13,89): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'src/Merchant/Merchant.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Merchant\Merchant.cpp(20,27): warning C4267: '=': 'size_t'에서 'short'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Merchant\Merchant.cpp(82,29): warning C4267: '=': 'size_t'에서 'short'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Merchant\Merchant.cpp(91,30): warning C4267: '=': 'size_t'에서 'short'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Merchant\Merchant.cpp(387,26): warning C4267: '=': 'size_t'에서 'short'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\InuyashaRescueTeam\src\Merchant\Merchant.cpp(395,27): warning C4267: '=': 'size_t'에서 'short'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SoundManager.cpp
+  코드를 생성하고 있습니다...
+  InuyashaRescueTeam.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_TeamProject_02\InuyashaRescueTeam\x64\Debug\InuyashaRescueTeam.exe
   0개 파일이 복사되었습니다.

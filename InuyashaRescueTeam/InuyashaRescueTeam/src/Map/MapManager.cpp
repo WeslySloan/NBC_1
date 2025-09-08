@@ -401,7 +401,7 @@ void MapManager::Release()
 
 void MapManager::EnterNextStage()
 {
-	if (currStage >= totalStage)
+	if (currStage >= TOTAL_STAGE)
 		return;
 
 	// 이미 다른 스테이지에서 사용한 시드값이면 다시 할당
@@ -411,13 +411,14 @@ void MapManager::EnterNextStage()
 	}
 	this->seed = RANDOM_MANAGER->GetSeed();
 	vecSeed.push_back(this->seed);
-	if (++currStage < totalStage)
+	if (++currStage < TOTAL_STAGE)
 	{
 		CreateMap(seed);
 		MakePlayerObj();
 		MakeStairs();
 		MakeMerchant();
 		PlaceMapObjRandomRoom(objPlayer, ObjType::None, false);
+        SOUND_MANAGER->PlayBgm(BGMType::NoneBattleField);
 		/*int playerRoom = RANDOM_MANAGER->Range(0, vecNode.size());
 		Vector2D roomPos = vecNode[playerRoom]->pos;
 		objPlayer->pos = Vector2D(roomPos.x * sizeMultipleX, roomPos.y * sizeMultipleY);*/
@@ -427,6 +428,21 @@ void MapManager::EnterNextStage()
 		CreateBossRoom();
 		MakePlayerObj();
 		objPlayer->pos = Vector2D(DATA_WIDTH / 8 * 3, DATA_HEIGHT / 2);
+
+        MapObj* objBoss = new MapObj();
+        objBoss->size = Vector2D(11, 3);
+        objBoss->strRender = L"┌─────────┐│ B O S S │└─────────┘";
+        objects.push_back(objBoss);
+        objBoss->pos = Vector2D(DATA_WIDTH / 8 * 5, DATA_HEIGHT / 2 + (objBoss->size.y - 1) / 2);
+        Vector2D lt = objBoss->pos - Vector2D((objBoss->size.x - 1) / 2, objBoss->size.y - 1);
+        for (int i = 0; i < objBoss->size.y; i++)
+        {
+            for (int j = 0; j < objBoss->size.x; j++)
+            {
+                vecType[lt.y + i][lt.x + j] = ObjType::Boss;
+            }
+        }
+        SOUND_MANAGER->PlayBgm(BGMType::BossMapTheme);
 	}
 }
 
@@ -529,22 +545,37 @@ void MapManager::UpdatePlayer()
 	move[1] = Vector2D(0, (GetAsyncKeyState(VK_UP) & 0x8000 ? -1 : GetAsyncKeyState(VK_DOWN) & 0x8000 ? 1 : 0));
 	for (int i = 0; i < 2; i++)
 	{
+        if (move[i] == Vector2D(0, 0))
+            continue;
+
 		Vector2D lastPos = objPlayer->pos;
 		Vector2D newPos = objPlayer->pos + move[i];
 		switch (vecType[newPos.y][newPos.x])
 		{
 			case ObjType::None:
-				objPlayer->pos = newPos;
-				break;
+                {
+                    objPlayer->pos = newPos;
+                    if (currStage < TOTAL_STAGE)
+                    {
+                        encountEnemy += DELTA_ENCOUNT_ENEMY;
+                        if (RANDOM_MANAGER->Range(0.0, 1.0) <= encountEnemy)
+                        {
+                            GAME_MANAGER->Battle(false);
+                            encountEnemy = MIN_ENCOUNT_ENEMY;
+                            return;
+                        }
+                    }
+                    break;
+                }
 			case ObjType::Stairs:
 				EnterNextStage();
-				break;
+				return;
 			case ObjType::Merchant:
-				// GameManager Merchant 호출
-				break;
+                GAME_MANAGER->SetState(GameManagerState::Merchant);
+				return;
 			case ObjType::Boss:
-				// GameManager 보스 전투 호출
-				break;
+                GAME_MANAGER->Battle(true);
+				return;
 			default:
 				break;
 		}

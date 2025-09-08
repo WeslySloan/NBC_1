@@ -1,8 +1,12 @@
 # 강의 내용 정리
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
+## 2025-09-08
+ - Enemy, 타입별 고유기 추가
+ - EnemyCard 시스템 Enemy 클래스로 이관
+ - RecoverStamina시 MAXStamina를 초과하던 문제 수정
+
 ## 2025-09-05
- - develop branch 복사
  - enemy 이관
  - 공격 가중치 추가 및 AI 재구성
 
