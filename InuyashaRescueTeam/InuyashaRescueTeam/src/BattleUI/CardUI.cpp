@@ -78,6 +78,11 @@ void CardUI::PrintCards(std::vector<std::shared_ptr<Card>> Cards)
         else if (auto HealCard = dynamic_cast<C_HealHP*>(card.get()))
         {
             DrawHealCard(*HealCard, spawnX + drawX, spawnY + drawY);
+        
+        }
+        else if (auto masterCard = dynamic_cast<MasterCard*>(card.get()))
+        {
+            DrawMasterCard(*masterCard, spawnX + drawX, spawnY + drawY);
         }
 
 		CardCount_Showed++;
@@ -232,6 +237,20 @@ void CardUI::DrawStaminaHealCard(C_HealStamina& Card, int x, int y)
     tbColor();
 }
 
+void CardUI::DrawMasterCard(MasterCard& Card, int x, int y)
+{
+    std::wstring name = L"Master";
+    PrintCardName(name, x, y);
+
+    GoToXY(x, y + 3);
+    std::cout << "무조건이김";
+    GoToXY(x, y + 4);
+    std::cout << "아무도 못막음";
+    GoToXY(x, y + 5);
+    std::cout << "크크";
+    tbColor();
+}
+
 #define UP 72
 #define DOWN 80
 #define LEFT 75
@@ -299,7 +318,7 @@ std::shared_ptr<Card> CardUI::ChoseCard(std::vector<std::shared_ptr<Card>> Cards
 				}
 				}
 				GoToXY(_spawnX + before_x * 14 + 1, _spawnY + before_y * 7 + 7);
-				std::cout << "              ";
+				std::cout << "             ";
 				GoToXY(_spawnX + x * 14 + 1, _spawnY + y * 7 + 7);
 				std::cout << "▲ 선택 : 엔터";
 			}
@@ -326,7 +345,7 @@ int CardUI::GetConsoleCharWidth(wchar_t wc) {
     return 1; // 영어, 숫자, 반각 문자 등은 1칸
 }
 
-void CardUI::PrintCardName(const std::string &name, int x, int y)
+void CardUI::PrintCardName(const std::string& name, int x, int y) 
 {
     static std::locale loc("");
 
@@ -342,10 +361,29 @@ void CardUI::PrintCardName(const std::string &name, int x, int y)
     {
         GoToXY(x + drawX, y + drawY);
         drawX += GetConsoleCharWidth(wsname[i]);
-        if (drawX == 12) {
+        if (drawX >= 12) {
             drawY++;
             drawX = 0;
         }
         std::wcout << wsname[i];
+    }
+}
+
+void CardUI::PrintCardName(const std::wstring &name, int x, int y)
+{
+    static std::locale loc("");
+    std::wcout.imbue(std::locale(""));
+
+    int drawX = 0;
+    int drawY = 0;
+    for (size_t i = 0; i < name.size(); i++)
+    {
+        GoToXY(x + drawX, y + drawY);
+        drawX += GetConsoleCharWidth(name[i]);
+        if (drawX >= 12) {
+            drawY++;
+            drawX = 0;
+        }
+        std::wcout << name[i];
     }
 }

@@ -38,9 +38,11 @@ public:
 private:
     int GetConsoleCharWidth(wchar_t wc);
     void PrintCardName(const std::string& name, int x, int y);
+    void PrintCardName(const std::wstring& name, int x, int y);
     void DrawMoveCard(C_Move& Card, int x, int y);
     void DrawAttackCard(C_Attack& Card, int x, int y);
     void DrawGuardCard(C_Guard& Card, int x, int y);
     void DrawHealCard(C_HealHP& Card, int x, int y);
     void DrawStaminaHealCard(C_HealStamina& Card, int x, int y);
+    void DrawMasterCard(MasterCard& Card, int x, int y);
 };
