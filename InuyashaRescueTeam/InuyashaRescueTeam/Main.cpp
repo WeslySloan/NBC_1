@@ -8,7 +8,7 @@
 #include "GameManager\GameManager.h"
 #include <windows.h>
 #include "Merchant\Merchant.h"
-#include "Map/MapManager.h"
+#include "Map/Managers/MapManager.h"
 #include "ImagePrinter.h"
 
 
@@ -26,15 +26,6 @@ int main() {
     {
         GAME_MANAGER->Update();
     }
-
-
-
-    // 상점 테스트 부분
-    //Merchant* test = new Merchant();
-    //test->OpenShop();
-  
-//     ImagePrinter image;
-//     image.DrawImage(KEY, 0, 0);
 
     return 0;
 }

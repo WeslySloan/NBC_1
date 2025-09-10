@@ -6,6 +6,8 @@
 #include "Entity/Enemy.h"
 #include "BattleUI/CardUI.h"
 #include "ImagePrinter.h"
+#include "Common/RandomManager.h"
+#include <unordered_set>
 
 
 
@@ -24,7 +26,7 @@ void BattleManager::Init(std::shared_ptr<Player>p, std::shared_ptr<Enemy>e)
         }
     }
     field.battlegrid[field.PlayerPositionY][field.PlayerPositionX] = 1;
-    field.battlegrid[field.EnemyPositionY][field.EnemyPositionX] = 2;
+    field.battlegrid[field.EnemyPositionY][field.EnemyPositionX] = 2;//필드 초기화
     _Grid.ReSet_Characters();
     _Log.Reset();
 }
@@ -38,7 +40,7 @@ void BattleManager::StartBattle()
     cursorInfo.bVisible = false; // 커서를 보이지 않게 설정
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
 
-    std::cout << "전투 시작!\n";
+    _Log.AddLog("전투 시작!\n");
 
     _HPTEXT.Draw();
     _ENTEXT.Draw();
@@ -67,33 +69,35 @@ void BattleManager::StartBattle()
 
     //_HP
 
-    //ShowUI();
-
     if (auto a = dynamic_cast<Boss*>(enemy.get())) {
         SOUND_MANAGER->PlayBgm(BGMType::BossTheme);
     }
     else {
         SOUND_MANAGER->PlayBgm(BGMType::BattleField);
     }
-
+    
     while (!player->IsDead() && !enemy->IsDead()) {
         //field.field_print();
 
         std::cin.get();
+        
         std::shared_ptr<Card> pCard = PlayerTurn();
         while (auto a = dynamic_cast<C_Move*>(pCard.get())) {           
-            if (field.MoveCheck(a->M_GetX() * a->M_GetDistance(), a->M_GetY() * a->M_GetDistance(), 1)) {
-                
+            if (field.MoveCheck(a->M_GetX() * a->M_GetDistance(), a->M_GetY() * a->M_GetDistance(), 1)) {             
                 break;
             }
             _Log.PrintLog("이동할 수 없습니다");
-            pCard = PlayerTurn();
+            _CardUI.Draw();
+            _CardUI.PrintCards(rdeck);
+            pCard = _CardUI.ChoseCard(rdeck);
         }
         while (pCard->C_GetCost() > player->GetStamina())
         {
             _Log.PrintLog("스태미나가 부족합니다!");
-            pCard = PlayerTurn();
-        }
+            _CardUI.Draw();
+            _CardUI.PrintCards(rdeck);
+            pCard = _CardUI.ChoseCard(rdeck);
+        }//스태미나가 부족하거나 벽을 넘어서는 이동을 하는 카드를 선택을 불가능 하도록 함
 
 
         // 적 턴 시작 시 플레이어와 적의 위치를 GetRandomCard 함수에 전달
@@ -115,8 +119,12 @@ void BattleManager::StartBattle()
         _Grid.ReSet_Characters();
 
         _Grid.Draw();
+        if (auto a = dynamic_cast<MasterCard*>(pCard.get())) {
+            enemy->SetHP(0);
+            break;
+        }
         Resolve(pCard, eCard, field);
-        player->RecoverStamina(15);
+        player->RecoverStamina(10);
         enemy->RecoverStamina(10);
 
         _Player_HPBar.SetValue(player.get()->GetHP());
@@ -129,7 +137,6 @@ void BattleManager::StartBattle()
         _Player_ENBar.Draw();
 
         _Enemy_HPBar.Draw();
-        //ShowUI(); // 가중치 배율 들어가면 Enemy HP 오른쪽에 ★배치 / 한번 표시되면 이후로 안사라지는 버그 있음.
         _Enemy_ENBar.Draw();
 
         _Grid.Draw();
@@ -139,35 +146,23 @@ void BattleManager::StartBattle()
     EndBattle();
 }
 
-
-void BattleManager::ShowUI()//하빈
-{
-    // 플레이어와 적 사이의 거리를 계산
-    int distanceX = std::abs(field.PlayerPositionX - field.EnemyPositionX);
-    int distanceY = std::abs(field.PlayerPositionY - field.EnemyPositionY);
-
-    // 3x3 범위 안에 있는지 확인
-    bool isInAttackRange = (distanceX <= 1 && distanceY <= 1);
-
-    //-------------임시 테스트용---------------
-    //std::cout << "==== 전투 UI ====\n";
-    //std::cout << player->GetName() << " HP: " << player->GetHP() << " Stamina: " << player->GetStamina()
-    //	<< " | " << enemy->GetName() << " HP: " << enemy->GetHP() << " Stamina: " << enemy->GetStamina();
-
-    if (isInAttackRange) {
-        std::cout << " ★"; // 공격 가중치 범위 안에 있을 때 ★ 표시
-    }
-    std::cout << "\n";
-}
-
-
-
 std::shared_ptr<Card> BattleManager::PlayerTurn()
 {
-    std::vector<std::shared_ptr<Card>> card = player->GetDeck();
+    rdeck.clear();
+    std::vector<std::shared_ptr<Card>> card = player->GetDeck();  
+    std::set<std::shared_ptr<Card>> output;
+    int cardnumber = player->GetDeck().size();
+    output.insert(GAME_MANAGER->GetAllCardsList()->at(8));
+    while(output.size()<5) { 
+        output.insert(card[RANDOM_MANAGER->Range(0, cardnumber)]); //STL set을 이용해서 중복되지 않게 카드를 입력받음
+    }
+    for (auto a : output) {
+        rdeck.push_back(a);
+    }//입력받은 카드를 호출하는 함수의 형태에 맞게 변형
+    
     _CardUI.Draw();
-    _CardUI.PrintCards(card);
-    return _CardUI.ChoseCard(card);
+    _CardUI.PrintCards(rdeck);
+    return _CardUI.ChoseCard(rdeck);
 }
 
 void BattleManager::Resolve(std::shared_ptr<Card> pCard, std::shared_ptr<Card> eCard, BattleField& field)
@@ -222,7 +217,7 @@ void BattleManager::Resolve(std::shared_ptr<Card> pCard, std::shared_ptr<Card> e
 
     if (auto attackCard = dynamic_cast<C_Attack*>(pCard.get())) //플레이어 공격
     {
-        std::vector<std::shared_ptr <Card>>* AllCardsList = GAME_MANAGER->GetAllCardsList();
+        
 
         SOUND_MANAGER->PlaySE(SOUND_MANAGER->GetCardSEType(attackCard->C_GetName()));
 
@@ -274,7 +269,7 @@ void BattleManager::Resolve(std::shared_ptr<Card> pCard, std::shared_ptr<Card> e
 bool BattleManager::HitCheck(int Entity, C_Attack* card)
 {
     int RposX = field.PlayerPositionX - field.EnemyPositionX;
-    int RposY = field.PlayerPositionY - field.EnemyPositionY;
+    int RposY = field.PlayerPositionY - field.EnemyPositionY;//플레이어와 유저의 상대적 위치
     if (RposX > 1 || RposX < -1 || RposY > 1 || RposY < -1) {
         return false;
     }
@@ -286,7 +281,7 @@ bool BattleManager::HitCheck(int Entity, C_Attack* card)
         return card->A_GetRange()[1 + RposY][1 + RposX];
     }
     else {
-        std::cout << "Wrong input HitCheck" << std::endl;
+        _Log.PrintLog("Wrong input HitCheck");
         return false;
     }
 }
