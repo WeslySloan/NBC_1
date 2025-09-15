@@ -127,7 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="TestApp.cpp" />
+    <ClCompile Include="AttackBoost.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="HealPotion.cpp" />
+    <ClCompile Include="test1.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="HealthPotion.h" />
+    <ClInclude Include="AttackBoost.h" />
+    <ClInclude Include="Item.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
