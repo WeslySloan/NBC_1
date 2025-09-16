@@ -2,6 +2,10 @@
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
 ## 2025-09-15
+ - AttackBoost.cpp / HealPotion.cpp 수정
+ - 소스 및 헤더 UTF-8 인코딩
+
+## 2025-09-15
  - TestApp 수정 
  - TextRPG 셋업 / 헤더 및 소스
 
