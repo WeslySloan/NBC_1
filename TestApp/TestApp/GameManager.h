@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TEXTRPG_GAMEMANAGER_H
 #define TEXTRPG_GAMEMANAGER_H
 
@@ -22,12 +21,13 @@ public:
 private:
     void displayInventory(Character* player); // 인벤토리 표시/사용
 
+
+
     void showMainMenu() const;       // 메뉴 UI 출력
     void handleCreateCharacter();    // 싱글턴 캐릭터 생성
     void handleShowStatus() const;   // 상태 출력
-    void handleInventoryMenu();      // 인벤토리 화면(→ displayInventory 호출)
-
     void handleShop();               // 상점(구매/지급/로그)
+    void handleInventoryMenu();      // 인벤토리 화면(→ displayInventory 호출)
 
     // [UML 명세] 전투/몬스터(현재 스텁)
     Monster* generateMonster(int level); // 레벨 기반 몬스터 생성(미구현)

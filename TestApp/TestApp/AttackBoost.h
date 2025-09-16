@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TEXTRPG_ATTACKBOOST_H
 #define TEXTRPG_ATTACKBOOST_H
 

@@ -1,5 +1,24 @@
-﻿  test1.cpp
-GameManager.obj : error LNK2019: "private: void __cdecl GameManager::log(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?log@GameManager@@AEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)"private: void __cdecl GameManager::displayInventory(class Character *)" (?displayInventory@GameManager@@AEAAXPEAVCharacter@@@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
-GameManager.obj : error LNK2019: "private: class std::unique_ptr<class Item,struct std::default_delete<class Item> > __cdecl GameManager::createHealthPotion(void)" (?createHealthPotion@GameManager@@AEAA?AV?$unique_ptr@VItem@@U?$default_delete@VItem@@@std@@@std@@XZ)"private: void __cdecl GameManager::handleShop(void)" (?handleShop@GameManager@@AEAAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-GameManager.obj : error LNK2019: "private: class std::unique_ptr<class Item,struct std::default_delete<class Item> > __cdecl GameManager::createAttackBoost(void)" (?createAttackBoost@GameManager@@AEAA?AV?$unique_ptr@VItem@@U?$default_delete@VItem@@@std@@@std@@XZ)"private: void __cdecl GameManager::handleShop(void)" (?handleShop@GameManager@@AEAAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\x64\Debug\TestApp.exe : fatal error LNK1120: 3개의 확인할 수 없는 외부 참조입니다.
+﻿  GameManager.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Character.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Item.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\HealthPotion.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\AttackBoost.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+  main.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\main.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'main.cpp'을(를) 컴파일하는 중)
+  
+  코드를 생성하고 있습니다...
+  TestApp.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\x64\Debug\TestApp.exe

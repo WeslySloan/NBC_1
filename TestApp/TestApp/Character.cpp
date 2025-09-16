@@ -36,36 +36,6 @@ void Character::displayStatus() const {
     std::cout << "\n==============================\n";
 }
 
-void Character::levelUp() {
-    if (level_ >= MAX_LEVEL) return;
-    ++level_;
-    // 요구사항: 현재 레벨에 비례해 최대체력/공격력 증가
-    maxHp_ += (level_ * 20);
-    atk_ += (level_ * 5);
-    // 레벨업 시 체력 풀 회복
-    hp_ = maxHp_;
-    std::cout << "[LEVEL UP] " << name_ << " → 레벨 " << level_
-        << "!  (MaxHP: " << maxHp_ << ", ATK: " << atk_ << ")\n";
-}
-
-void Character::useItem(int index) {
-    if (index < 0 || static_cast<std::size_t>(index) >= inventory_.size()) {
-        std::cout << "잘못된 슬롯 번호입니다.\n";
-        return;
-    }
-    // 포인터로 전달(UML 시그니처)
-    inventory_[index]->use(this);
-    // 사용 후 인벤토리에서 제거(소멸자 호출)
-    inventory_.erase(inventory_.begin() + index);
-}
-
-
-
-
-
-
-
-
 bool Character::spendGold(int amount) {
     if (amount <= gold_) { gold_ -= amount; return true; }
     return false;
@@ -83,7 +53,16 @@ void Character::addItem(std::unique_ptr<Item> item) {
     inventory_.emplace_back(std::move(item));
 }
 
-
+void Character::useItem(int index) {
+    if (index < 0 || static_cast<std::size_t>(index) >= inventory_.size()) {
+        std::cout << "잘못된 슬롯 번호입니다.\n";
+        return;
+    }
+    // 포인터로 전달(UML 시그니처)
+    inventory_[index]->use(this);
+    // 사용 후 인벤토리에서 제거(소멸자 호출)
+    inventory_.erase(inventory_.begin() + index);
+}
 
 std::vector<std::string> Character::inventoryNames() const {
     std::vector<std::string> names;
@@ -102,4 +81,14 @@ void Character::addExperience(int amount) {
     }
 }
 
-
+void Character::levelUp() {
+    if (level_ >= MAX_LEVEL) return;
+    ++level_;
+    // 요구사항: 현재 레벨에 비례해 최대체력/공격력 증가
+    maxHp_ += (level_ * 20);
+    atk_ += (level_ * 5);
+    // 레벨업 시 체력 풀 회복
+    hp_ = maxHp_;
+    std::cout << "[LEVEL UP] " << name_ << " → 레벨 " << level_
+        << "!  (MaxHP: " << maxHp_ << ", ATK: " << atk_ << ")\n";
+}
