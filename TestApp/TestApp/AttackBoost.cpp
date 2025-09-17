@@ -1,6 +1,10 @@
+#include "Character.h"
+#include <iostream>
 #include "AttackBoost.h"
-#include "Character.h" // Character 클래스 정의 포함
 
 void AttackBoost::use(Character* character) {
-    character->increaseAttack(attackIncrease);
+	if (!character) return;
+	character->increaseAttack(attackIncrease);
+	std::cout << "아이템 사용: " << getName()
+		<< " (+" << attackIncrease << " ATK)\n";
 }

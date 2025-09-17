@@ -1,6 +1,10 @@
+#include "Character.h"
+#include <iostream>
 #include "HealthPotion.h"
-#include "Character.h" // Character 클래스 정의 포함
 
 void HealthPotion::use(Character* character) {
+    if (!character) return;
     character->heal(healthRestore);
+    std::cout << "아이템 사용: " << getName()
+        << " (+" << healthRestore << " HP)\n";
 }
