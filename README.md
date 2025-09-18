@@ -2,7 +2,102 @@
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
 ## 2025-09-18
- -
+<details>
+<summary>▶ 클래스 관계 정리 </summary>
+**클래스 관계 (Class Relationships)**
+
+### 상속 관계 (Inheritance) 
+
+'Is-a' 관계. 한 클래스가 다른 클래스의 속성과 기능을 물려받음.
+
+  * **정의:** `AttackBoost`와 `HealthPotion`은 공통 부모 클래스인 `Item`을 상속받는다. `Item`은 객체로 생성될 수 없는 추상 클래스다.
+  * **예시 코드:**
+    ```cpp
+    class Item {
+    public:
+        virtual void use(Character* character) = 0;
+    };
+
+    class AttackBoost : public Item {
+    public:
+        void use(Character* character) override;
+    };
+
+    class HealthPotion : public Item {
+    public:
+        void use(Character* character) override;
+    };
+    ```
+  * **분석:** `AttackBoost`는 \*\*`Item`의 일종(is an Item)\*\*이다. 이 구조는 모든 아이템이 `use()` 메서드를 가질 것을 보장한다.
+
+-----
+
+### 포함 관계 (Composition) 
+
+강력한 'Has-a' 관계. 한 클래스가 다른 클래스의 생명주기를 전적으로 관리한다.
+
+  * **정의:** `Character` 클래스는 인벤토리(`inventory_`)에 `Item` 객체들을 `std::unique_ptr`를 통해 직접 소유한다. `Character`가 소멸되면 인벤토리의 아이템들도 함께 소멸된다.
+  * **예시 코드:**
+    ```cpp
+    class Character {
+    private:
+        std::vector<std::unique_ptr<Item>> inventory_;
+    public:
+        void addItem(std::unique_ptr<Item> item);
+        void useItem(int index);
+    };
+    ```
+  * **분석:** `Character`는 `Item`을 가지고 있다(A `Character` **has a**n `Item`). `std::unique_ptr` 사용이 이 강력한 관계를 명확히 보여준다.
+
+-----
+
+### 의존 관계 (Dependency) 
+
+가장 약한 관계. 한 클래스가 다른 클래스를 일시적으로 사용한다.
+
+  * **정의:** `GameManager`는 `Character` 객체를 멤버 변수로 소유하지 않는다. 대신, 필요할 때 `Character::getInstance()`를 호출하거나 메서드 파라미터로 받아 사용한다. `Item`의 `use()` 메서드도 마찬가지다.
+  * **예시 코드:**
+    ```cpp
+    // GameManager.cpp
+    void GameManager::handleInventoryMenu() {
+        Character* player = Character::instance(); // 의존 관계
+        if (player) {
+            displayInventory(player);
+        }
+    }
+
+    // AttackBoost.cpp
+    void AttackBoost::use(Character* character) { // 의존 관계
+        if (!character) return;
+        character->increaseAttack(attackIncrease);
+    }
+    ```
+  * **분석:** `GameManager`와 `AttackBoost`는 `Character`에 의존하지만, 이 관계는 메서드 호출이 끝나는 즉시 사라진다.
+
+-----
+
+### 연관 관계 (Association) 
+
+두 클래스가 서로를 알고 상호작용하는 일반적인 'Has-a' 관계. 생명주기는 독립적이다.
+
+  * **정의:** `GameManager`는 게임 흐름 관리를 위해 `Character` 클래스의 존재를 인지하고 있다. `Character`는 싱글턴으로 구현되어 있어 어디서든 쉽게 접근 가능하다.
+  * **예시 코드:**
+    ```cpp
+    // GameManager.h
+    #include "Character.h" // Character 클래스에 대한 연관
+    class GameManager {
+    private:
+        void handleCreateCharacter();
+    };
+
+    // GameManager.cpp
+    void GameManager::handleCreateCharacter() {
+        Character* player = Character::getInstance(); // 연관 관계
+    }
+    ```
+  * **분석:** `GameManager`는 `Character`를 참조하여 사용한다. 이는 두 클래스가 서로를 알고 상호작용하는 연관 관계를 보여준다.
+
+</details>
 
 
 ## 2025-09-17
