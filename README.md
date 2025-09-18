@@ -2,7 +2,7 @@
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
 ## 2025-09-18
-<details open>
+ - <details open>
 <summary> 클래스 관계 정리 </summary>
 **클래스 관계 (Class Relationships)**
 
@@ -97,8 +97,57 @@
     ```
   * **분석:** `GameManager`는 `Character`를 참조하여 사용한다. 이는 두 클래스가 서로를 알고 상호작용하는 연관 관계를 보여준다.
 
-</details>
+-----
 
+### 집합 관계 (Aggregation) 🧩
+
+느슨한 **'Has-a'** 관계. 한 클래스가 다른 클래스의 객체들을 포함하지만, 포함된 객체들이 독립적인 생명 주기를 갖는다.
+
+  * **정의:** '선생님' 클래스는 '학생' 객체들을 멤버로 포함할 수 있다. 하지만 선생님이 사라져도 학생들은 계속 존재할 수 있다.
+  * **예시 코드:**
+
+<!-- end list -->
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+
+// 포함될 객체 (부품)
+class Student {
+public:
+    Student(std::string name) : name_(name) {}
+    void introduce() const {
+        std::cout << "I am a student named " << name_ << std::endl;
+    }
+private:
+    std::string name_;
+};
+
+// 포함하는 객체 (전체)
+class Teacher {
+public:
+    Teacher(std::string name) : name_(name) {}
+    void addStudent(const Student& student) {
+        students_.push_back(student);
+    }
+    void listStudents() const {
+        std::cout << name_ << " teaches:" << std::endl;
+        for (const auto& student : students_) {
+            student.introduce();
+        }
+    }
+private:
+    std::string name_;
+    std::vector<Student> students_; // 학생들의 집합
+};
+```
+
+  * **분석:** `Teacher`는 `Student`를 가지고 있다. 하지만 `Student` 객체들은 `Teacher` 객체와는 별개로 생성되고 존재할 수 있다.
+
+
+
+</details>
 
 ## 2025-09-17
  - AttackBoost.cpp / HealPotion.cpp 수정
