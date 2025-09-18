@@ -1,7 +1,14 @@
 # 강의 내용 정리
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
-## 2025-09-15
+## 2025-09-18
+ -
+
+
+## 2025-09-17
+ - AttackBoost.cpp / HealPotion.cpp 수정
+
+## 2025-09-16
  - AttackBoost.cpp / HealPotion.cpp 수정
  - 소스 및 헤더 UTF-8 인코딩
 
@@ -38,17 +45,18 @@
 - TestApp 추가
 - 적 및 AI
 
+<details>
+<summary>▶ 2025년 8월 TIL</summary>
+
 ## 2025-08-11
  - README 작성
-
 ## 2025-08-07
  - CharacterResource 이주 및 레벨 디자인
-
 ## 2025-08-06
  - 텍스트 슈팅 게임
-
 ## 2025-08-05
  - 레벨 디자인
-
 ## 2025-08-04
  - 프로젝트 커밋 및 에셋 빌드
+
+</details>
