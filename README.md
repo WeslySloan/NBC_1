@@ -2,8 +2,8 @@
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
 ## 2025-09-18
-<details>
-<summary>▶ 클래스 관계 정리 </summary>
+<details open>
+<summary> 클래스 관계 정리 </summary>
 **클래스 관계 (Class Relationships)**
 
 ### 상속 관계 (Inheritance) 
@@ -141,7 +141,7 @@
 - 적 및 AI
 
 <details>
-<summary>▶ 2025년 8월 TIL</summary>
+<summary> 2025년 8월 TIL</summary>
 
 ## 2025-08-11
  - README 작성
