@@ -19,6 +19,12 @@
     <Filter Include="소스 파일\Items">
       <UniqueIdentifier>{122704f1-443e-4467-b84f-f1c595e4fcde}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Monsters">
+      <UniqueIdentifier>{c55968ad-6bbe-4c64-b8ac-d3e04d368054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Monsters">
+      <UniqueIdentifier>{e53399c5-ebd8-481a-8312-0caa6c6dc5c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +45,21 @@
     <ClCompile Include="Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="BossDragon.cpp">
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HealthPotion.h">
@@ -55,6 +76,24 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Goblin.h">
+      <Filter>헤더 파일\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc.h">
+      <Filter>헤더 파일\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>헤더 파일\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Troll.h">
+      <Filter>헤더 파일\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="BossDragon.h">
+      <Filter>헤더 파일\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>헤더 파일\Monsters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

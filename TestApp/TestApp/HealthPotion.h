@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TEXTRPG_HEALTHPOTION_H
 #define TEXTRPG_HEALTHPOTION_H
 
@@ -15,6 +14,7 @@ public:
 
     // 캐릭터의 HP를 healthRestore만큼 회복
     void use(Character* character) override;
+
     int healthRestore; // 회복량(예: 50)
 };
 

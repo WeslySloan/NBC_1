@@ -9,16 +9,137 @@ C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Character.h(1,1): w
 C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Item.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
   
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\BossDragon.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
+  
 C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\HealthPotion.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
   
 C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\AttackBoost.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'GameManager.cpp'을(를) 컴파일하는 중)
   
-  main.cpp
-C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\main.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  (소스 파일 'main.cpp'을(를) 컴파일하는 중)
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,24): error C2259: 'Goblin': 추상 클래스를 인스턴스화할 수 없습니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.h(7,7):
+      'Goblin' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,24):
+      다음 멤버가 원인입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,24):
+      'std::string Monster::getName(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(15,25):
+      'Monster::getName' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,24):
+      'int Monster::getHealth(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(16,25):
+      'Monster::getHealth' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,24):
+      'int Monster::getAttack(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(17,25):
+      'Monster::getAttack' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,24):
+      'void Monster::takeDamage(int)': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(18,25):
+      'Monster::takeDamage' 선언을 참조하십시오.
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,30): error C2259: 'Goblin': 추상 클래스를 인스턴스화할 수 없습니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.h(7,7):
+      'Goblin' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,30):
+      다음 멤버가 원인입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,30):
+      'std::string Monster::getName(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(15,25):
+      'Monster::getName' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,30):
+      'int Monster::getHealth(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(16,25):
+      'Monster::getHealth' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,30):
+      'int Monster::getAttack(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(17,25):
+      'Monster::getAttack' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(126,30):
+      'void Monster::takeDamage(int)': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(18,25):
+      'Monster::takeDamage' 선언을 참조하십시오.
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,24): error C2259: 'Orc': 추상 클래스를 인스턴스화할 수 없습니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Orc.h(6,7):
+      'Orc' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,24):
+      다음 멤버가 원인입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,24):
+      'std::string Monster::getName(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(15,25):
+      'Monster::getName' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,24):
+      'int Monster::getHealth(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(16,25):
+      'Monster::getHealth' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,24):
+      'int Monster::getAttack(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(17,25):
+      'Monster::getAttack' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,24):
+      'void Monster::takeDamage(int)': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(18,25):
+      'Monster::takeDamage' 선언을 참조하십시오.
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,27): error C2259: 'Orc': 추상 클래스를 인스턴스화할 수 없습니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Orc.h(6,7):
+      'Orc' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,27):
+      다음 멤버가 원인입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,27):
+      'std::string Monster::getName(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(15,25):
+      'Monster::getName' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,27):
+      'int Monster::getHealth(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(16,25):
+      'Monster::getHealth' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,27):
+      'int Monster::getAttack(void) const': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(17,25):
+      'Monster::getAttack' 선언을 참조하십시오.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(127,27):
+      'void Monster::takeDamage(int)': abstract입니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(18,25):
+      'Monster::takeDamage' 선언을 참조하십시오.
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(238,21): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(239,17): error C2146: 구문 오류: ')'이(가) 'gameOver_' 식별자 앞에 없습니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(239,17): error C2146: 구문 오류: ';'이(가) 'gameOver_' 식별자 앞에 없습니다.
+  Goblin.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Goblin.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Goblin.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.cpp(12,5): error C2065: 'health_': 선언되지 않은 식별자입니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.cpp(13,5): error C2065: 'attack_': 선언되지 않은 식별자입니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.cpp(16,14): error C2509: 'takeDamage': 멤버 함수를 'Goblin'에서 선언하지 않았습니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Goblin.h(7,7):
+      'Goblin' 선언을 참조하십시오.
+  
+  Orc.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Orc.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Orc.cpp(12,5): error C2065: 'health_': 선언되지 않은 식별자입니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Orc.cpp(13,5): error C2065: 'attack_': 선언되지 않은 식별자입니다.
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Orc.cpp(16,11): error C2509: 'takeDamage': 멤버 함수를 'Orc'에서 선언하지 않았습니다.
+      C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Orc.h(6,7):
+      'Orc' 선언을 참조하십시오.
+  
+  Troll.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\Monster.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  (소스 파일 'Troll.cpp'을(를) 컴파일하는 중)
   
   코드를 생성하고 있습니다...
-  TestApp.vcxproj -> C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\x64\Debug\TestApp.exe

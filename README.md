@@ -2,8 +2,7 @@
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
 ## 2025-09-18
- - <details open>
-<summary> 클래스 관계 정리 </summary>
+ - <details open><summary> 클래스 관계 정리 </summary>
 **클래스 관계 (Class Relationships)**
 
 ### 상속 관계 (Inheritance) 
@@ -99,7 +98,7 @@
 
 -----
 
-### 집합 관계 (Aggregation) 🧩
+### 집합 관계 (Aggregation)
 
 느슨한 **'Has-a'** 관계. 한 클래스가 다른 클래스의 객체들을 포함하지만, 포함된 객체들이 독립적인 생명 주기를 갖는다.
 

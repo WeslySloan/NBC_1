@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TEXTRPG_ITEM_H
 #define TEXTRPG_ITEM_H
 
@@ -13,7 +12,7 @@ class Character; // 전방 선언(헤더 간 순환 의존 방지)
 class Item {
 public:
     // 부모가 name을 보관합니다. 파생 클래스는 이름을 넘겨 호출합니다.
-    Item(const std::string& n) : name(n) {}
+    explicit Item(const std::string& n) : name(n) {}
     virtual ~Item() = default;
 
     // 공통 이름 반환(파생 클래스가 별도로 오버라이드할 필요 없음)
