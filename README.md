@@ -1,8 +1,13 @@
 # 강의 내용 정리
 캠프동안 들은 강의 및 공부한 내용을 올린 Repository 입니다.
 
+## 2025-09-19
+ - Monsters 추가
+ - GameManager 및 Character 소스 및 헤더 수정
+
 ## 2025-09-18
- - <details open><summary> 클래스 관계 정리 </summary>
+<details open>
+<summary> 클래스 관계 정리 </summary>
 **클래스 관계 (Class Relationships)**
 
 ### 상속 관계 (Inheritance) 

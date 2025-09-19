@@ -221,14 +221,14 @@ void GameManager::battle(Character* player) {
             // 분노 체크(한 번만 발동)
             int enrageHP = static_cast<int>(std::ceil(m->getHealth() / ENRAGE_THRESHOLD)); // not exact, just flag below
             (void)enrageHP; // silence warning (we're checking percentage directly below)
-            if (!enraged) {
-                // 현재 HP%가 30% 이하로 내려갔는지 확인
-                // (직전 공격으로 낮아졌을 수 있으니 여기서 판단)
-                // health / maxHealth를 모르면, '처음 HP 대비'를 못 구하니
-                // 간단히 '현 체력이 0이 아니고, 플레이어 ATK가 몬스터 ATK보다 낮거나 같으면' 등으로도 트리거할 수 있으나
-                // 이 예제에서는 '체력 수치 기준'으로 단순 처리: 1차 발동 메시지 한번만.
-                // → 실제 최대체력을 모르는 구조라, 분노는 아래 몬스터 턴 시작 시 HP%로 체크하도록 이동.
-            }
+            //if (!enraged) {
+            //    // 현재 HP%가 30% 이하로 내려갔는지 확인
+            //    // (직전 공격으로 낮아졌을 수 있으니 여기서 판단)
+            //    // health / maxHealth를 모르면, '처음 HP 대비'를 못 구하니
+            //    // 간단히 '현 체력이 0이 아니고, 플레이어 ATK가 몬스터 ATK보다 낮거나 같으면' 등으로도 트리거할 수 있으나
+            //    // 이 예제에서는 '체력 수치 기준'으로 단순 처리: 1차 발동 메시지 한번만.
+            //    // → 실제 최대체력을 모르는 구조라, 분노는 아래 몬스터 턴 시작 시 HP%로 체크하도록 이동.
+            //}
         }
 
         if (m->getHealth() <= 0)
@@ -248,12 +248,14 @@ void GameManager::battle(Character* player) {
         // 분노 트리거: 현재 HP% <= 30%
         // (최대체력을 모르니 출현 당시 공격력으로 '추정'하지 않고,
         //  분노는 한번만 켜고 이후 공격 배수만 적용)
-        if (!enraged) {
+        if (!enraged) 
+        {
             // 간단히: 등장 직후 체력을 기억하지 못하니, 임계값을 절대값으로 추정하기 어렵다.
             // 여기서는 플레이어 공격으로 HP가 '초기 기준의 30% 이하로 내려갔다'고 가정하는 효과만 주기 위해,
             //  전투 중 한 번 랜덤으로(HP가 낮아졌을 때) 분노가 켜질 수 있도록 확률 트리거를 둡니다.
             //  → 실전이라면 Monster가 maxHealth를 갖고 있어야 정확하게 퍼센트를 계산할 수 있습니다.
-            if (m->getHealth() <= (player->attackDamage())) {
+            if (m->getHealth() <= (player->attackDamage())) 
+            {
                 enraged = true;
                 std::cout << m->getName() << "이(가) 분노합니다! (공격 상승)\n";
                 log("몬스터 분노 발동: " + m->getName());
