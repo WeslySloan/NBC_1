@@ -8,7 +8,6 @@
 ## 2025-09-18
 <details open>
 <summary> 클래스 관계 정리 </summary>
-**클래스 관계 (Class Relationships)**
 
 ### 상속 관계 (Inheritance) 
 
