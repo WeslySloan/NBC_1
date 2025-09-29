@@ -152,6 +152,9 @@ private:
 
 </details>
 
+## 2025-09-29
+ - 2번째 레벨테스트 프로젝트 생성
+
 ## 2025-09-17
  - AttackBoost.cpp / HealPotion.cpp 수정
 
