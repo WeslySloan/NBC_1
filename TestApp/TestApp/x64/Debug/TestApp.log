@@ -24,3 +24,6 @@ C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\AttackBoost.h(1,1):
 C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(240,21): error C2001: 상수에 줄 바꿈 문자가 있습니다.
 C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(241,17): error C2146: 구문 오류: ')'이(가) 'gameOver_' 식별자 앞에 없습니다.
 C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\GameManager.cpp(241,17): error C2146: 구문 오류: ';'이(가) 'gameOver_' 식별자 앞에 없습니다.
+  main.cpp
+C:\Users\rkc32\OneDrive\Desktop\GITHUB\NBC_1\TestApp\TestApp\main.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  코드를 생성하고 있습니다...
