@@ -233,13 +233,13 @@ void GameManager::battle(Character* player) {
 
         if (m->getHealth() <= 0)
         {
-            std::cout << m->getName() << " 처치!\n";
-            if (dynamic_cast<BossDragon*>(m.get()) != nullptr)
-            {
-                std::cout << "보스 Dragon을 쓰러뜨렸습니다! 게임 클리어!\n";
-                log("보스 격파: 게임 클리어");
-                gameOver_ = true;
-            }
+            //std::cout << m->getName() << " 처치!\n";
+            //if (dynamic_cast<BossDragon*>(m.get()) != nullptr)
+            //{
+            //    std::cout << "보스 Dragon을 쓰러뜨렸습니다! 게임 클리어!\n";
+            //    log("보스 격파: 게임 클리어");
+            //    gameOver_ = true;
+            //}
             break;
         }
 

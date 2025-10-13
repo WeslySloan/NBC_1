@@ -1,70 +1,150 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-class BankAccount {
-private:
-    string owner; // 계좌 소유자 정보
-    double balance; // 잔액 정보
+int main() 
+{
+    int N;
+    if (!(cin >> N) || N <= 0) 
+        return 0;
 
-public:
-    BankAccount(const string& name, double initial) {
-        // 생성자 로직을 작성해주세요.
-        // 생성자 매개변수 설명: 소유자 이름(name), 초기 잔액(initial)
-        owner = name;
-        balance = max(0.0, initial);
-    }
+    int data[1000];
+    int freq[2001] = { 0 };
+    const int OFFSET = 1000;
 
-    void deposit(double amount) {
-        // 입금 로직을 작성해주세요.
-        if (amount > 0)
-            balance = balance + amount;
-    }
+    int min_val, max_val;
+    long long sum = 0;
+    long long abs_sum = 0;
+    int even_count = 0;
+    int odd_count = 0;
 
-    bool withdraw(double amount) {
-        // 출금 로직을 작성해주세요.
-        if (amount > 0)
+    for (int i = 0; i < N; ++i) 
+    {
+        int num;
+        cin >> num;
+        data[i] = num;
+
+        if (i == 0) 
         {
-            balance = amount - balance;
-            return true;
+            min_val = num;
+            max_val = num;
         }
-        return false;
+        else 
+        {
+            if (num < min_val) 
+                min_val = num;
+            if (num > max_val) 
+                max_val = num;
+        }
+
+        sum = sum + num;
+
+        int num_abs = (num < 0) ? -num : num; 
+        abs_sum = abs_sum + num_abs;
+
+        if (num % 2 == 0) 
+            even_count++;
+        else odd_count++;
+
+        freq[num + OFFSET]++;
     }
 
-    double getBalance() const {
-        return balance;
-        /*if (amount < 0)
-            return false;
-        else
-            return true;*/
+    int max_freq = 0;
+    int mode_val = 0;
+
+    for (int i = 0; i < 2001; ++i) 
+    {
+        if (freq[i] > max_freq) 
+        {
+            max_freq = freq[i];
+            mode_val = i - OFFSET;
+        }
     }
 
-    // 계좌 정보 출력하는 함수 (구현하실 필요 없음)
-    void printInfo() const {
-        cout << "Owner: " << owner << ", Balance: " << balance << " won\n";
-    }
-};
+    double avg = (double)sum / N;
+    double abs_avg = (double)abs_sum / N;
 
-int main() {
-    BankAccount account("Alice", 1000);
-    account.printInfo(); // Owner: Alice, Balance: 1000 won
+    cout << "min: " << min_val << "\n";
+    cout << "max: " << max_val << "\n";
+    cout << "avg: ";
+    long long rounded_avg = (long long)(avg * 10 + 0.5);
+    cout << rounded_avg / 10 << "." << rounded_avg % 10 << "\n";
+    cout << "mode: " << mode_val << "\n";
+    cout << "even: " << even_count << "\n";
+    cout << "odd: " << odd_count << "\n";
+    cout << "abs_avg: ";
+    long long rounded_abs_avg = (long long)(abs_avg * 10 + 0.5);
+    cout << rounded_abs_avg / 10 << "." << rounded_abs_avg % 10 << "\n";
 
-    account.deposit(500);
-    account.printInfo(); // Owner: Alice, Balance: 1500 won
-
-    if (account.withdraw(2000)) {
-        cout << "Withdraw OK!\n"; // 이건 출력 안됨
-    }
-    else {
-        cout << "Withdraw FAILED!\n"; // 이것이 출력됨
-    }
-
-    if (account.withdraw(1000)) {
-        cout << "Withdraw OK!\n"; // 이것이 출력됨
-    }
-
-    account.printInfo(); // Owner: Alice, Balance: 500 won
+    return 0;
 }
+
+//#include <iostream>
+//#include <string>
+//using namespace std;
+//
+//class BankAccount {
+//private:
+//    string owner; // 계좌 소유자 정보
+//    double balance; // 잔액 정보
+//
+//public:
+//    BankAccount(const string& name, double initial) {
+//        // 생성자 로직을 작성해주세요.
+//        // 생성자 매개변수 설명: 소유자 이름(name), 초기 잔액(initial)
+//        owner = name;
+//        balance = max(0.0, initial);
+//    }
+//
+//    void deposit(double amount) {
+//        // 입금 로직을 작성해주세요.
+//        if (amount > 0)
+//            balance = balance + amount;
+//    }
+//
+//    bool withdraw(double amount) {
+//        // 출금 로직을 작성해주세요.
+//        if (amount > 0)
+//        {
+//            balance = amount - balance;
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    double getBalance() const {
+//        return balance;
+//        /*if (amount < 0)
+//            return false;
+//        else
+//            return true;*/
+//    }
+//
+//    // 계좌 정보 출력하는 함수 (구현하실 필요 없음)
+//    void printInfo() const {
+//        cout << "Owner: " << owner << ", Balance: " << balance << " won\n";
+//    }
+//};
+//
+//int main() {
+//    BankAccount account("Alice", 1000);
+//    account.printInfo(); // Owner: Alice, Balance: 1000 won
+//
+//    account.deposit(500);
+//    account.printInfo(); // Owner: Alice, Balance: 1500 won
+//
+//    if (account.withdraw(2000)) {
+//        cout << "Withdraw OK!\n"; // 이건 출력 안됨
+//    }
+//    else {
+//        cout << "Withdraw FAILED!\n"; // 이것이 출력됨
+//    }
+//
+//    if (account.withdraw(1000)) {
+//        cout << "Withdraw OK!\n"; // 이것이 출력됨
+//    }
+//
+//    account.printInfo(); // Owner: Alice, Balance: 500 won
+//}
 
 // 최대값 초기생성자
 // 잔액은 음수가 될 수 없으며
