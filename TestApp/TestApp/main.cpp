@@ -1,82 +1,113 @@
-#include <iostream>
+#include <string>
+#include <cctype>
+
 using namespace std;
 
-int main() 
-{
-    int N;
-    if (!(cin >> N) || N <= 0) 
-        return 0;
+string solution(string s) {
+    for (int i = 0; i < s.length(); ++i) {
+        if (s[i] == ' ') continue;
 
-    int data[1000];
-    int freq[2001] = { 0 };
-    const int OFFSET = 1000;
-
-    int min_val, max_val;
-    long long sum = 0;
-    long long abs_sum = 0;
-    int even_count = 0;
-    int odd_count = 0;
-
-    for (int i = 0; i < N; ++i) 
-    {
-        int num;
-        cin >> num;
-        data[i] = num;
-
-        if (i == 0) 
-        {
-            min_val = num;
-            max_val = num;
-        }
-        else 
-        {
-            if (num < min_val) 
-                min_val = num;
-            if (num > max_val) 
-                max_val = num;
+        bool start_of_word;
+        if (i == 0)
+            start_of_word = true;
+        else {
+            if (s[i - 1] == ' ') {
+                start_of_word = true;
+            }
+            else {
+                start_of_word = false;
+            }
         }
 
-        sum = sum + num;
-
-        int num_abs = (num < 0) ? -num : num; 
-        abs_sum = abs_sum + num_abs;
-
-        if (num % 2 == 0) 
-            even_count++;
-        else odd_count++;
-
-        freq[num + OFFSET]++;
-    }
-
-    int max_freq = 0;
-    int mode_val = 0;
-
-    for (int i = 0; i < 2001; ++i) 
-    {
-        if (freq[i] > max_freq) 
-        {
-            max_freq = freq[i];
-            mode_val = i - OFFSET;
+        if (isalpha(s[i])) {
+            if (start_of_word)
+                s[i] = toupper(s[i]);
+            else
+                s[i] = tolower(s[i]);
         }
     }
-
-    double avg = (double)sum / N;
-    double abs_avg = (double)abs_sum / N;
-
-    cout << "min: " << min_val << "\n";
-    cout << "max: " << max_val << "\n";
-    cout << "avg: ";
-    long long rounded_avg = (long long)(avg * 10 + 0.5);
-    cout << rounded_avg / 10 << "." << rounded_avg % 10 << "\n";
-    cout << "mode: " << mode_val << "\n";
-    cout << "even: " << even_count << "\n";
-    cout << "odd: " << odd_count << "\n";
-    cout << "abs_avg: ";
-    long long rounded_abs_avg = (long long)(abs_avg * 10 + 0.5);
-    cout << rounded_abs_avg / 10 << "." << rounded_abs_avg % 10 << "\n";
-
-    return 0;
+    return s;
 }
+
+//#include <iostream>
+//using namespace std;
+//
+//int main() 
+//{
+//    int N;
+//    if (!(cin >> N) || N <= 0) 
+//        return 0;
+//
+//    int data[1000];
+//    int freq[2001] = { 0 };
+//    const int OFFSET = 1000;
+//
+//    int min_val, max_val;
+//    long long sum = 0;
+//    long long abs_sum = 0;
+//    int even_count = 0;
+//    int odd_count = 0;
+//
+//    for (int i = 0; i < N; ++i) 
+//    {
+//        int num;
+//        cin >> num;
+//        data[i] = num;
+//
+//        if (i == 0) 
+//        {
+//            min_val = num;
+//            max_val = num;
+//        }
+//        else 
+//        {
+//            if (num < min_val) 
+//                min_val = num;
+//            if (num > max_val) 
+//                max_val = num;
+//        }
+//
+//        sum = sum + num;
+//
+//        int num_abs = (num < 0) ? -num : num; 
+//        abs_sum = abs_sum + num_abs;
+//
+//        if (num % 2 == 0) 
+//            even_count++;
+//        else odd_count++;
+//
+//        freq[num + OFFSET]++;
+//    }
+//
+//    int max_freq = 0;
+//    int mode_val = 0;
+//
+//    for (int i = 0; i < 2001; ++i) 
+//    {
+//        if (freq[i] > max_freq) 
+//        {
+//            max_freq = freq[i];
+//            mode_val = i - OFFSET;
+//        }
+//    }
+//
+//    double avg = (double)sum / N;
+//    double abs_avg = (double)abs_sum / N;
+//
+//    cout << "min: " << min_val << "\n";
+//    cout << "max: " << max_val << "\n";
+//    cout << "avg: ";
+//    long long rounded_avg = (long long)(avg * 10 + 0.5);
+//    cout << rounded_avg / 10 << "." << rounded_avg % 10 << "\n";
+//    cout << "mode: " << mode_val << "\n";
+//    cout << "even: " << even_count << "\n";
+//    cout << "odd: " << odd_count << "\n";
+//    cout << "abs_avg: ";
+//    long long rounded_abs_avg = (long long)(abs_avg * 10 + 0.5);
+//    cout << rounded_abs_avg / 10 << "." << rounded_abs_avg % 10 << "\n";
+//
+//    return 0;
+//}
 
 //#include <iostream>
 //#include <string>
