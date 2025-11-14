@@ -3,7 +3,7 @@
 
 ## 2025-11-14
 
-<details>
+<details open>
 <summary><strong>TIL: 산술 시프트 vs 논리 시프트, 그리고 보수법</strong></summary>
 <br>
 
