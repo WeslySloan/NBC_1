@@ -1,33 +1,69 @@
+#include <iostream>
 #include <string>
-#include <cctype>
 
 using namespace std;
 
-string solution(string s) {
-    for (int i = 0; i < s.length(); ++i) {
-        if (s[i] == ' ') continue;
+int solution(const string& s) {
+    // TODO: 여기에 코드를 작성하세요.
+    int result = 0;
+    
+    for (int i = 0; i < s.length(); i++)
+    {
 
-        bool start_of_word;
-        if (i == 0)
-            start_of_word = true;
-        else {
-            if (s[i - 1] == ' ') {
-                start_of_word = true;
-            }
-            else {
-                start_of_word = false;
-            }
-        }
-
-        if (isalpha(s[i])) {
-            if (start_of_word)
-                s[i] = toupper(s[i]);
-            else
-                s[i] = tolower(s[i]);
-        }
     }
-    return s;
+
+    return result;
 }
+
+/**
+ * main 함수는 수정하지 마세요.
+ */
+int main() {
+    cout << "--- 테스트 케이스 ---" << endl;
+    cout << "aabbccc (예상: 6): " << solution("aabbccc") << endl;
+    cout << "ab (예상: 2): " << solution("ab") << endl;
+    cout << "aaaaa (예상: 2): " << solution("aaaaa") << endl;
+    cout << "aaabbc (예상: 5): " << solution("aaabbc") << endl;
+    cout << "abcde (예상: 5): " << solution("abcde") << endl;
+    cout << "a (예상: 1): " << solution("a") << endl;
+    cout << " (예상: 0): " << solution("") << endl;
+    cout << "aaabbaaccccdeee (예상: 11): " << solution("aaabbaaccccdeee") << endl;
+    cout << "aaaaaaaaaabb (예상: 5): " << solution("aaaaaaaaaabb") << endl;
+
+    return 0;
+}
+
+
+//#include <string>
+//#include <cctype>
+//
+//using namespace std;
+//
+//string solution(string s) {
+//    for (int i = 0; i < s.length(); ++i) {
+//        if (s[i] == ' ') continue;
+//
+//        bool start_of_word;
+//        if (i == 0)
+//            start_of_word = true;
+//        else {
+//            if (s[i - 1] == ' ') {
+//                start_of_word = true;
+//            }
+//            else {
+//                start_of_word = false;
+//            }
+//        }
+//
+//        if (isalpha(s[i])) {
+//            if (start_of_word)
+//                s[i] = toupper(s[i]);
+//            else
+//                s[i] = tolower(s[i]);
+//        }
+//    }
+//    return s;
+//}
 
 //#include <iostream>
 //using namespace std;
